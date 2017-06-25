@@ -1,24 +1,45 @@
-import java.swing.JFrame;
+import javax.swing.*;
 
-public class Gameboard{
+import java.awt.*;
+
+import java.util.Vector;
+
+public class Gameboard extends JFrame{
     
+    private static final int borderIncrement = 30; 
+    private static final int dy = 15;
+    
+    private static final int size = 570;
+    
+    //private Vector 
 
     // we create the visual board within the constructor 
-    public Gameboard(int length, int height){
+    public Gameboard(){     
+        setSize(size, size-dy);
+        setTitle("Omok Game");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    
+    public void paint(Graphics g){
         
-        JFrame window = new JFrame;
-        window.setSize(length, height);
-        window.setTitle("Omok Game");
+        g.setColor(Color.ORANGE);
+        g.fillRect(0,0,size,size-dy);
         
-        // loops that create the lines that make up the board 
-        for (int x = 0; x <= length; x++){
-            for (int y = 0; y <= height; y++){
+        g.setColor(Color.BLACK);
+        
+        for (int x = borderIncrement; x <= size; x=x+borderIncrement){
+            for (int y = borderIncrement+dy; y <= size; y=y+borderIncrement){
                 
-                // create lines
-                window.drawLine(x, 0, x, height);
-                window.drawLine(0, y, length, y);
+                g.drawLine(x,45,x,size-45);
+                g.drawLine(borderIncrement,y,size-borderIncrement,y);
             }
         }
+        
+    }
+    
+    public static void main(String[] args){
+       new Gameboard();
     }
 }
                 
