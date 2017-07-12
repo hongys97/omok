@@ -16,15 +16,19 @@ public class OFrame extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        JPanel mainPanel = new JPanel();
-        mainPanel.addMouseListener(new MouseAdapter());
-            @Override
-            public void mousePressed(MouseEvent e){
-                clicks++;
-                text.setText(clicks + " Clicks");
+        addMouseListener(new MouseAdapter(){
+
+                @Override
+                public void mousePressed(MouseEvent e){
+                    System.out.println("Yolo");
                 }
-        
-        
+
+                @Override
+                public void mouseReleased(MouseEvent e){
+                }
+            }
+        );
+
     }
     
     
